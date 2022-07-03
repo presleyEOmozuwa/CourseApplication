@@ -1,0 +1,35 @@
+/* #form-section{
+    background-image: url("../../../assets/images/office-gf5438339e_1920.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 700px;
+}
+
+#form-section #form-data{
+    margin-top: 80px;
+}
+
+#form-section .extras button{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+#form-section #trigger, #google {
+    width: 70%;
+}
+
+#form-section input{
+    box-shadow: none !important;
+    border: 1px solid gray;
+}
+
+#form-section input.ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+
+#form-section #account a
+{
+    text-decoration: none;
+} */

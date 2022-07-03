@@ -1,0 +1,36 @@
+<section class="mt-4">
+    <div class="container" *ngIf="course | async as c">
+        <div class="row course-title align-items-center">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 text-center">
+                <h3>{{c.courseName}}</h3>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center">
+                <img class="mb-3 rounded img-fluid" width="50%" src="{{c.image}}">
+                <p class="mb-4"> {{c.price | currency: '$'}} per month</p>
+                <div class="d-grid gap-2 col-6 mx-auto">    
+                    <button class="btn btn-danger shadow" type="button" [routerLink]="['/products/list']"> Courses</button>
+                    <button class="btn btn-warning shadow" type="button" [routerLink]="['/cart/shopping-cart']">Go to Cart</button>
+                </div>
+            </div>
+            <div class="col-md-6 pt-4">
+                <h4>Subscribe to this Course</h4>
+                <p class="fst-italic">{{c.description}}</p>
+                <div class="my-5">
+                    <span class="fw-semibold" style="font-size: 24px;">Course Package Includes :</span>
+                    <ul class="list-unstyled">
+                        <li>In depth practice with real world Projects.</li>
+                        <li>Exercises and Solutions</li>
+                        <li>Basic Support on Github</li>
+                        <li>Monthly Updates</li>
+                        <li>Free Cancellation</li>
+                    </ul>
+                </div>
+                <app-addtocart></app-addtocart>
+            </div>
+        </div>
+    </div>
+</section>

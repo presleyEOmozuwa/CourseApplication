@@ -1,0 +1,27 @@
+#form-scope{
+    background-image: url("../../../assets/images/architecture-g01bd529c2_1920.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: auto;
+}
+
+#form-scope input.ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+
+#form-scope #register{
+    margin-top: 85px;
+}
+
+
+#form-scope input
+{
+    box-shadow: none !important;
+    border: 1px solid gainsboro;
+}
+
+#form-scope #account a
+{
+    text-decoration: none;
+}

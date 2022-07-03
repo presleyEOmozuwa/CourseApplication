@@ -1,0 +1,32 @@
+<section class="product-list">
+    <div class="container-fluid align-items-center">
+        <div class="row mb-2">
+            <div class="col-md-3  mr-2 mb-1 shadow rounded pt-3" *ngFor="let course of courses | async | paginate: { itemsPerPage: 8, currentPage: p}">
+                <div class="card border-0" style="width: 12rem">
+                    <div class="text-center rounded">
+                        <img src="{{course.image}}" class="card-img-top h-6" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title justify-content-center"><a [routerLink]="['/products/details', course.courseId]">{{course.courseName}}</a></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <pagination-controls (pageChange)= "p = $event "></pagination-controls>
+    </div>
+</section>
+
+<!-- <section>
+    <div class="container-fluid">
+       <div class="row mb-2">
+          <div class="col-sm-3" *ngFor="let course of courses | async">
+            <div class="card" style="width: 12rem;">
+                <img src="{{course.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{course.courseName}}</h5>
+                </div>
+              </div>
+          </div>
+       </div>
+    </div>
+</section> -->
