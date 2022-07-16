@@ -1,1 +1,48 @@
-<p>shopping-cart works!</p>
+<section class="mt-2">
+   <div class="container">
+      <div class="row cart-overview">
+         <div class="col-lg-6 mb-5">
+            <img class="cart-img" src="../../../assets/images/redcart.jfif" width="50px">
+            <span class="display-6">Shopping Cart</span>
+         </div>
+         <div class="col-lg-6">
+            <div class="d-grid gap-2 col-8 mx-auto mb-1">
+               <span class="fs-5">Cart subtotal&nbsp; [{{ shoppingCart.itemCounter}} item(s)]<span class="fw-bolder">:</span>&nbsp;&nbsp; {{ subTotal() | currency:
+                  '$'}}</span>
+            </div>
+            <div class="d-grid gap-2 col-8 mx-auto mb-1">
+               <button class="btn btn-danger shadow" type="submit" (click)="checkout()">Checkout</button>
+            </div>
+            <div class="d-grid gap-2 col-8 mx-auto mb-1">
+               <button class="btn btn-warning shadow" type="button" [routerLink]="['/products/list']">Courses</button>
+            </div>
+         </div>
+      </div>
+      <div class="row m-3 py-2 border align-items-center shadow rounded" *ngFor="let course of shoppingCart.allCourseModels">
+         <div class="col-lg-4">
+            <img src="{{course.image}}" width="35%">
+         </div>
+         <div class="col-lg-4 detail">
+            <h6>{{course.courseName}}</h6>
+            <div class="">
+               <button class="text-primary m-1" type="button" (click)="removeFromCart(course.courseId)">Delete</button>
+               |
+               <button class="text-primary m-1" type="button" [routerLink]="['/products/details', course.courseId]">Go
+                  Back</button>
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <span class="fs-6">{{ course.price | currency: '$' }} per month</span>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-lg-3">
+         </div>
+         <div class="col-lg-6" id="cart-zero" *ngIf="shoppingCart.itemCounter === 0">
+             <p class="h2">Your Rubbles Cart is empty, Keep shopping to find a course!</p>
+             <button class=" bg-danger text-white shadow rounded" type="button" [routerLink]="['/products/list']">Shop Now</button>
+         </div>
+         <div class="col-lg-3"></div>
+     </div>
+   </div>
+</section>

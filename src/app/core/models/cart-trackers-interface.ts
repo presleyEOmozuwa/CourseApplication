@@ -1,15 +1,10 @@
-export interface ICartOperations{
+export interface ICartTrackers{
    addedCourseId: string;
    removedCourseId: string;
    newlyAdded: boolean;
    alreadyAdded: boolean;
    isDoneAdded: boolean;
    isDoneRemoved: boolean;
-   itemCount: number;
+   itemCounter: number;
    message: string;
-
-}
-
-export interface ICartTrackers{
-    result: ICartOperations
 }

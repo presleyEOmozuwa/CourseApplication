@@ -1,7 +1,7 @@
-export interface IDecodeToken{
+export interface ILocalStoreToken{
     nameid: string
     family_name: string;
     given_name: string;
-    unique_name: string;
+    name: string;
     email: string;
 }

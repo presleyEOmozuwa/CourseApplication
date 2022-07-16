@@ -1,0 +1,25 @@
+.cart-img{
+    margin-top: -18px;
+}
+
+.cart-overview{
+    margin-bottom: 70px;
+}
+
+.detail button{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: white;
+    font-size: 14px;
+}
+
+#cart-zero button{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    margin: 3px;
+    width: 35%;
+    padding: 3px;
+    background-color: white;
+}

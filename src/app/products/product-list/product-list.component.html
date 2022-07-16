@@ -1,7 +1,7 @@
 <section class="product-list">
     <div class="container-fluid align-items-center">
         <div class="row mb-2">
-            <div class="col-md-3  mr-2 mb-1 shadow rounded pt-3" *ngFor="let course of courses | async | paginate: { itemsPerPage: 8, currentPage: p}">
+            <div class="col-lg-3  mr-2 mb-1 shadow rounded pt-3" *ngFor="let course of courses | async | paginate: { itemsPerPage: 8, currentPage: p}">
                 <div class="card border-0" style="width: 12rem">
                     <div class="text-center rounded">
                         <img src="{{course.image}}" class="card-img-top h-6" alt="...">

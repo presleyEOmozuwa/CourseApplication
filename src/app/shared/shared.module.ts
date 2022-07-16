@@ -6,17 +6,17 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CustomMaterialModule } from '../core/utils/material.module';
 import { CartcounterComponent } from './cartcounter/cartcounter.component';
-import { AddtocartComponent } from './addtocart/addtocart.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
 import { AuthLinksComponent } from './auth-links/auth-links.component';
+import { CartWidgetComponent } from './cart-widget/cart-widget.component';
 
 
 @NgModule({
   declarations: [
     CartcounterComponent,
-    AddtocartComponent,
     ViewcartComponent,
-    AuthLinksComponent
+    AuthLinksComponent,
+    CartWidgetComponent
   ],
   imports: [
     CommonModule,
@@ -36,8 +36,9 @@ import { AuthLinksComponent } from './auth-links/auth-links.component';
     NgxPaginationModule,
     CustomMaterialModule,
     CartcounterComponent,
-    AddtocartComponent,
-    ViewcartComponent
+    ViewcartComponent,
+    AuthLinksComponent,
+    CartWidgetComponent
   ]
 })
 export class SharedModule { }

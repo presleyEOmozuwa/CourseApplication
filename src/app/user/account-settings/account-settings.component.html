@@ -1,0 +1,156 @@
+<section class="mt-4 update-form">
+    <div class="container">
+        <div class="row personal-details">
+            <div class="col-lg-7">
+                <p class="display-6">
+                    Account Personal Details
+                </p>
+                <p>If you want to <span class="fw-bold">Edit</span> the details associated with your <span
+                        class="fw-bold">Rubbles account</span>,<br> Be sure to click the <span
+                        class="fw-bold">Update</span> button when you are done.</p>
+            </div>
+            <div class="col-lg-5">
+                <form class="mb-4" #p="ngForm" (ngSubmit)="personAccountDetails()">
+                    <div class="form-group mb-3">
+                        <label class="form-control-label" for="firstName">First Name</label>
+                        <input class="form-control" type="text" name="firstName" id="firstName" #fName="ngModel"
+                             [(ngModel)]="payload.firstName">
+                        <div *ngIf="fName.invalid && (fName.dirty || fName.touched)">
+                            <small class="text-danger" *ngIf="fName.errors.minlength" class="text-danger">First
+                                Name must be minimum
+                                of 2
+                                characters</small>
+                            <small class="text-danger" *ngIf="fName.errors.maxlength" class="text-danger">First
+                                Name must be maximum
+                                of 20
+                                characters</small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-control-label" for="lastName">Last Name</label>
+                        <input class="form-control" type="text" name="lastName" id="lastName" #lastN="ngModel"
+                            [(ngModel)]="payload.lastName">
+                        <div *ngIf="lastN.invalid && (lastN.dirty || lastN.touched)">
+                            <small class="text-danger" *ngIf="lastN.errors.minlength" class="text-danger">Last
+                                Name must be minimum
+                                of 2
+                                characters</small>
+                            <small class="text-danger" *ngIf="lastN.errors.maxlength" class="text-danger">Last
+                                Name must be maximum
+                                of 20
+                                characters</small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-control-label" for="email">EmailAddress</label>
+                        <input class="form-control" type="email" name="email" #mail="ngModel" id="email" [(ngModel)]="payload.email">
+                        <div *ngIf="mail.invalid && (mail.dirty || mail.touched)">
+                            <small class="text-danger" *ngIf="mail.errors.minlength" class="text-danger">Provide a valid EmailAddress</small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-control-label" for="userName">UserName</label>
+                        <input class="form-control" type="text" name="userName" id="userName" #userN="ngModel"
+                            [(ngModel)]="payload.userName">
+                        <div *ngIf="userN.invalid && (userN.dirty || userN.touched)">
+                            <small class="text-danger" *ngIf="userN.errors.maxlength" class="text-danger">UserName
+                                must be maximum of 20 characters.</small>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 col-6 m-auto">
+                        <button class="btn btn-primary shadow rounded border" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row signin-security">
+            <div class="col-lg-7">
+                <p class="display-6">
+                    Sign-in & Security
+                </p>
+                <p>If you <span class="fw-bold">Change your Password</span>,<br>Keep your <span class="fw-bold">New Password</span> secured and safe,<br> You will need it in your next login.</p>
+            </div>
+            <div class="col-lg-5">
+                <form class="mb-4" #f="ngForm" (ngSubmit)="signInAndSecurity()">
+                    <div class="form-group mb-4">
+                        <label class="form-control-label" for="passwordHash"> Current Password</label>
+                        <input class="form-control" type="password" name="passwordHash" id="passwordHash" #cpass="ngModel"
+                            placeholder="enter current password" [(ngModel)]="creds.passwordHash">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-control-label" for="password">New Password</label>
+                        <input class="form-control" type="password" name="password" id="password" #npass="ngModel"
+                            placeholder="enter new password" [(ngModel)]="creds.password">
+                        <div *ngIf="npass.invalid && (npass.dirty || npass.touched)">
+                            <small class="text-danger" *ngIf="npass.errors.minlength" class="text-danger">Password
+                                must be minimum
+                                of 8
+                                characters</small>
+                            <small class="text-danger" *ngIf="npass.errors.maxlength" class="text-danger">Password
+                                must be maximum
+                                of 20
+                                characters</small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-control-label" for="confirmPassword">Confirm New Password</label>
+                        <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
+                            #cPass="ngModel" placeholder="enter new password again" [(ngModel)]="creds.confirmPassword">
+                        <div *ngIf="cPass.invalid && (cPass.dirty || cPass.touched)">
+                            <small class="text-danger" *ngIf="cPass.errors.required">
+                                Confirm Password field is required
+                            </small>
+                            <small class="text-danger" *ngIf="cPass.errors.matching"
+                                class="text-danger">Confirm Password do not match
+                            </small>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 col-6 m-auto">
+                        <button class="btn btn-primary shadow rounded border" type="submit">Change</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row multi-factor">
+            <div class="col-lg-7">
+                <p class="display-6">
+                    Multi-Factor Authentication
+                </p>
+                <p>
+                    Multi-Factor Authentication is a security control that requires users <br> to verify their
+                    identities by providing multiple pieces of evidence <br> before gaining access to a device or
+                    application.<br><a [routerLink]="[]">Understand Multi-Factor Authentication</a>
+                </p>
+            </div>
+            <div class="col-lg-5 border p-4">
+                <div class="text-center mb-4">
+                    <img src="../../../assets/images/securitykey.png" width="50px">
+                </div>
+                <p>
+                    Multi-Factor Authentication protects your account against common threats like phishing attacks,
+                    credential stuffing, and account takeovers. It adds another layer of security to your login process
+                    by requiring users to enter two or more pieces of evidence — or factors — in addition to password to
+                    prove they are who they say they are.
+                </p>
+                <div class="d-grid gap-2 col-9 m-auto">
+                    <button class="btn btn-primary shadow rounded border" type="button" [routerLink]="[]">Setup
+                        Multi-factor Authentication</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <h5 class="text-danger">Close Account</h5>
+                <p><span class="fw-bold fs-5">Warning</span> : Closing your account is <span
+                        class="fw-bold fs-5">irreversible</span>.<br>When you click the <span class="fw-bold">Delete Account button</span>, a pop-up box <br> will show up to confirm if you want to continue with the <span class="fw-bold">Action</span>.</p>
+            </div>
+            <div class="col-lg-5 pt-4">
+                <div class="d-grid gap-2 col-8 m-auto">
+                    <button class="btn btn-danger shadow rounded border" type="button" (click)="deleteAccount()">
+                        Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -33,3 +33,12 @@
 {
     text-decoration: none;
 } */
+
+.login-form input{
+    box-shadow: none !important;
+    border: 2px solid gray;
+}
+
+.login-form input.ng-touched.ng-invalid{
+    border: 1px solid red;
+}

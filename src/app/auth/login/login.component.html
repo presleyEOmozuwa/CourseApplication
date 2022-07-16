@@ -1,10 +1,9 @@
-<section id="form-section">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-5 p-5 bg-white shadow rounded border" id=form-data>
-                <p class="mb-5" style="font-size: 26px;">Sign-In</p>
+<section class="login-form mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 border border-2 shadow rounded p-5">
+                <p class="mb-3" style="font-size: 26px;">Sign-In</p>
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <div class="form-group mb-4">
                         <label for="email" class="form-control-label">Email</label>
@@ -21,7 +20,7 @@
                         <input class="form-control border border-top-0 border-end-0 border-start-0" type="password"
                             formControlName="password" id="password">
                         <p class="text-end">
-                            <a style="text-decoration: none;" [routerLink]="['/security/forgot-password']">forgot
+                            <a style="text-decoration: none;" [routerLink]="['/user/forgot-password']">forgot
                                 password?</a>
                         </p>
                         <div *ngIf="g.password.invalid && (g.password.dirty || g.password.touched)">
@@ -30,33 +29,25 @@
                             </small>
                         </div>
                     </div>
-                    <div class="form-check mb-5">
+                    <div class="form-check mb-3">
                         <input class="form-check-input" type="checkbox" formControlName="rememberMe" id="rememberMe"
                             value="">
                         <label for="rememberMe" class="form-check-label">Remember me (optional)</label>
                     </div>
-                    <div class="text-center">
-                        <button class=" bg-primary text-white border rounded p-1" id="trigger">Sign in</button>
+                    <div class="d-grid gap-2 col-6 mx-auto mb-1">
+                        <button class="btn btn-primary shadow" type="submit">Submit</button>
                     </div>
                 </form>
-                <div class="extras">
-                    <div class="text-center">
-                        <button class="text-primary bg-white" [routerLink]="['/register']">No account yet? Sign
-                            Up</button>
+                <a class="nav-link active text-center mb-3" aria-current="page" [routerLink]="['/auth/register']">Not account yet?
+                    Sign
+                    Up?</a>
+                <div class="text-center">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-danger shadow" type="submit" (click)="loginWithGoogle()">Google</button>
                     </div>
-                    <p class="text-center mt-3 fw-lighter">OR</p>
-                    <hr>
-                    <div class="text-center">
-                        <img class="img-fluid bg-white" src="../../../assets/images/google.png" width="30px">
-                        <button class=" shadow border p-1 bg-danger text-white rounded" id="google"
-                            (click)="loginWithGoogle()">Google</button>
-                    </div>
-
                 </div>
             </div>
-            <div class="col-md-3 mt-2">
-            </div>
+            <div class="col-lg-3"></div>
         </div>
     </div>
 </section>
-

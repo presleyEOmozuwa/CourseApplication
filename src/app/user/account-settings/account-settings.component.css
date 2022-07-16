@@ -1,0 +1,16 @@
+.update-form input{
+    box-shadow: none !important;
+    border: 2px solid gainsboro;
+}
+
+.personal-details{
+    margin-bottom: 70px;
+}
+
+.signin-security{
+    margin-bottom: 70px;
+}
+
+.multi-factor{
+    margin-bottom: 70px;
+}

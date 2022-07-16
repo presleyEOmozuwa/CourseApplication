@@ -16,7 +16,7 @@ export class CourseService {
   }
 
   getCourseById(courseId: string): Observable<ICourse>{
-    const url: string = 'https://localhost:7016/api/course/getbyid/' + courseId;
+    const url: string = `https://localhost:7016/api/course/get-course/${courseId}`;
      return this.httpClient.get<any>(url);
   }
 }

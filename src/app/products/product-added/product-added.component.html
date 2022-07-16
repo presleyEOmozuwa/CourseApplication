@@ -1,0 +1,22 @@
+<section class="added-info">
+  <div class="container">
+    <div class="row" *ngIf="course | async as c">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2 text-center added-img">
+        <img src="{{c.image}}" width="65%">
+      </div>
+      <div class="col-lg-6">
+        <img src="" width="23%">
+        <span class="d-grid gap-2 col-8 mx-auto" id="mark">
+          <p class="display-6"> Added to Cart</p>
+          <span>{{c.courseName}}.</span>
+        </span>
+        <div class="d-grid gap-2 col-8 mx-auto">
+          <button class="btn btn-danger shadow" type="button" [routerLink]="['/cart/shopping-cart']"> Go to
+            Cart</button>
+        </div>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+</section>

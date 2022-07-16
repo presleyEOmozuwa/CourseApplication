@@ -13,7 +13,7 @@
                 <p class="mb-4"> {{c.price | currency: '$'}} per month</p>
                 <div class="d-grid gap-2 col-6 mx-auto">    
                     <button class="btn btn-danger shadow" type="button" [routerLink]="['/products/list']"> Courses</button>
-                    <button class="btn btn-warning shadow" type="button" [routerLink]="['/cart/shopping-cart']">Go to Cart</button>
+                    <button class="btn btn-warning shadow" *ngIf="isLoggedIn()" type="button" [routerLink]="['/cart/shopping-cart']">Go to Cart</button>
                 </div>
             </div>
             <div class="col-md-6 pt-4">
@@ -29,7 +29,10 @@
                         <li>Free Cancellation</li>
                     </ul>
                 </div>
-                <app-addtocart></app-addtocart>
+                <div class="d-grid gap-2 col-7 mx-auto">    
+                    <button class="btn btn-danger shadow" type="button" (click)="addToCart(c.courseId)">AddtoCart</button>
+                    <button class="btn btn-warning shadow" type="button" (click)="buyNow(c.priceId)">Buy Now</button>
+                </div>
             </div>
         </div>
     </div>

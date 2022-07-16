@@ -1,0 +1,7 @@
+<button type="button" class="btn btn-primary position-relative" [routerLink]="['/cart/shopping-cart']" *ngIf="isLoggedIn()">
+  <img class="fs-3" src="../../../assets/images/shopping-cart (2).svg">
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    {{counter}}
+  </span>
+</button>
+
