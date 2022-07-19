@@ -1,9 +1,14 @@
 export interface ILoginTracker 
 {
-    isAuthenticated: boolean,
-    isExternalLogger: boolean,
-    isEmailConfirmed: boolean,
-    isSubscriber: boolean,
-    isLoggedInFromAnotherDevice: boolean,
-    isVerificationCodesent: boolean
+    userId: string;
+    isAuthenticated: boolean;
+    isExternalLogger: boolean;
+    isEmailConfirmed: boolean;
+    isSubscriber: boolean;
+    isLoggedInFromAnotherDevice: boolean;
+    isVerificationCodeSent: boolean;
+    isAccountDeleted: boolean;
+    isEmailInvalid: boolean;
+    isPasswordInvalid: boolean;
+    isAuthCodeValidationSuccessful: boolean;
 }

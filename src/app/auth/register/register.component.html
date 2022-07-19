@@ -106,5 +106,6 @@
             </div>
             <div class="col-lg-3"></div>
         </div>
+        <app-register-alert-modal [val]="messages" *ngIf="messages.emailConfirmationLinkSent || messages.accountDeleted || messages.emailAlreadyTaken || messages.userNameAlreadyTaken || messages.registrationSucceeded" (close)="messages.emailConfirmationLinkSent = null;messages.accountDeleted = null;messages.emailAlreadyTaken = null;messages.userNameAlreadyTaken = null;messages.registrationSucceeded = null;"></app-register-alert-modal>
     </div>
 </section>

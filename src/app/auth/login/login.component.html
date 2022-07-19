@@ -49,5 +49,6 @@
             </div>
             <div class="col-lg-3"></div>
         </div>
+        <app-login-alert-modal [val]="messages" *ngIf="messages.loggedInFromAnotherDevice || messages.accountDeleted || messages.emailInvalid || messages.passwordInvalid" (close)="messages.loggedInFromAnotherDevice = null;messages.accountDeleted = null;messages.emailInvalid = null;messages.passwordInvalid = null;"></app-login-alert-modal>
     </div>
 </section>

@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RegisterService } from 'src/app/core/authServices/register.service';
 import { AlertService } from '@full-fledged/alerts';
 import { IpAddressService } from 'src/app/core/commonServices/ip-address.service';
+import { IRegisterAlertModal } from 'src/app/core/models/register-alert-modal.interface';
 
 
 @Component({
@@ -17,6 +18,13 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   clientIpAddress: any;
+  messages: IRegisterAlertModal = {
+    emailConfirmationLinkSent: null,
+    accountDeleted: null,
+    emailAlreadyTaken: null,
+    userNameAlreadyTaken: null,
+    registrationSucceeded: null
+  };
 
   constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private registerService: RegisterService, private alertService: AlertService, private ipService: IpAddressService) { }
 
@@ -37,12 +45,29 @@ export class RegisterComponent implements OnInit {
     const observer: any = {
       next: (data: any) => {
         console.log(data);
-        this.alertService.danger("Check your inbox for email confirmation link.");
-
+        if(data.isEmailConfirmationLinkSent == true){
+            this.messages.emailConfirmationLinkSent = data.isEmailConfirmationLinkSent;
+        }
+        // this.alertService.danger("Check your inbox for email confirmation link.");
       },
-      error: (error: any) => {
-        console.log(error);
-        this.alertService.danger("Data already used, and account deleted, provide new email and username to continue registration.");
+      error: (res: any) => {
+        console.log(res);
+        if(res.error.isAccountDeleted == true){
+            this.messages.accountDeleted = res.error.isAccountDeleted;
+          // this.alertService.danger("Account deleted, provide new email and username to continue registration.");
+        }
+        if(res.error.isEmailAlreadyTaken == true){
+            this.messages.emailAlreadyTaken = res.error.isEmailAlreadyTaken;
+          // this.alertService.danger("Email already taken.");
+        }
+        if(res.error.isUserNameAlreadyTaken == true){
+             this.messages.userNameAlreadyTaken = res.error.isUserNameAlreadyTaken;
+          // this.alertService.danger("UserName already taken.");
+        }
+        if(res.error.isRegistrationSucceeded == false){
+            this.messages.registrationSucceeded = res.error.isRegistrationSucceeded;
+          // this.alertService.danger("Registration failed, Try again later.");
+        }
       }
     }
     this.registerService.register(userData, this.clientIpAddress.ip).subscribe(observer);

@@ -5,23 +5,28 @@ import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/an
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IGoogleUser } from '../models/google-user.interface';
 import { ILoginTracker } from '../models/login-tracker.interface';
+import { loggerHelper } from '../utils/logger-helper.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-   loginTrackers: ILoginTracker = {
-      isAuthenticated: null,
-      isEmailConfirmed: null,
-      isExternalLogger: null,
-      isSubscriber: null,
-      isLoggedInFromAnotherDevice: null,
-      isVerificationCodesent: null
-   }
-  constructor(private httpClient: HttpClient, private socialService: SocialAuthService) {}
-  
-  login(payload: ILogin, ipAddress: any)
-  {
+  loginTrackers: ILoginTracker = {
+    userId: null,
+    isAuthenticated: null,
+    isEmailConfirmed: null,
+    isExternalLogger: null,
+    isSubscriber: null,
+    isAccountDeleted: null,
+    isEmailInvalid: null,
+    isPasswordInvalid: null,
+    isLoggedInFromAnotherDevice: null,
+    isVerificationCodeSent: null,
+    isAuthCodeValidationSuccessful: null
+  }
+  constructor(private httpClient: HttpClient, private socialService: SocialAuthService) { }
+
+  login(payload: ILogin, ipAddress: any) {
     const loginUrl: string = "https://localhost:7016/api/loginuser/login";
     const httpHeaders = new HttpHeaders();
     const body: any = {
@@ -32,29 +37,22 @@ export class LoginService {
     }
     httpHeaders.append('Content-Type', 'application/json');
     return this.httpClient.post<any>(loginUrl, body, { headers: httpHeaders }).pipe(
-      map((res: any) => 
-      {
-        console.log(res);
-        this.loginTrackers.isAuthenticated = res.response.isAuthenticated;
-        this.loginTrackers.isEmailConfirmed = res.response.isEmailConfirmed;
-        this.loginTrackers.isExternalLogger = res.response.isExternalLogger;
-        this.loginTrackers.isSubscriber = res.response.isSubscriber;
-        this.loginTrackers.isLoggedInFromAnotherDevice = res.response.isLoggedInFromAnotherDevice;
-        this.loginTrackers.isVerificationCodesent = res.response.isVerificationCodesent;
-        localStorage.setItem('token', res.token.result);
+      map((val: any) => {
+        console.log(val);
+        loggerHelper(this.loginTrackers, val)
+        localStorage.setItem('token', val.token.result);
         return this.loginTrackers;
       })
     );
   }
-  
-  
-  signInIdentityUser(){
+
+
+  signInIdentityUser() {
     return this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
-  
-  googleIdentityLogger(googleCredentials: IGoogleUser)
-  {
+
+  googleIdentityLogger(googleCredentials: IGoogleUser) {
     const baseUrl: string = "https://localhost:7016/api/external/externalLogger";
     const body: IGoogleUser = {
       provider: googleCredentials.provider,
@@ -63,11 +61,22 @@ export class LoginService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.httpClient.post<any>(baseUrl, body, { headers: headers })
-    .pipe(map((res: any) =>
-    {
-      localStorage.setItem('token', res.token.result);
-      return res;
-    }));
+      .pipe(map((res: any) => {
+        localStorage.setItem('token', res.token.result);
+        return res;
+      }));
   }
+
   
+  sendVerificationCode(code: string, userId: string){
+    const url: string = "https://localhost:7016/api/loginuser/login-auth-code";
+    const httpHeaders = new HttpHeaders();
+    const body: any = {
+      authCode: code,
+      id: userId
+    }
+    httpHeaders.append('Content-Type', 'application/json');
+    return this.httpClient.post<any>(url, body, {headers: httpHeaders});
+  }
+
 }

@@ -1,15 +1,5 @@
-<section class="bg-primary shadow rounded" style="padding: 100px;" id="email-confirm">
+<section>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-
-            </div>
-            <div class="col-md-4 text-center">
-                <h2 class="text-white display-6">Email Confirmation Page</h2>
-            </div>
-            <div class="col-md-4">
-
-            </div>
-        </div>
+        <app-email-confirmation-alert-modal [val]="messages" *ngIf="messages.serverError || messages.emailConfirmedFailed" (close)="messages.serverError = null;messages.emailConfirmedFailed = null;"></app-email-confirmation-alert-modal>
     </div>
 </section>

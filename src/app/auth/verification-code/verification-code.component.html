@@ -1,0 +1,26 @@
+<section class="verify">
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col-lg-4"></div>
+           <div class="col-lg-4">
+            <p class="fs-4">Enter the verification code from the message sent to your inbox.</p>
+           </div>
+           <div class="col-lg-4"></div>
+        </div>
+       <div class="row">
+          <div class="col-lg-4"></div>
+          <div class="col-lg-4 border shadow rounder p-5">
+             <form class="code-form" (click)="verificationCode()">
+                <div class="form-group mb-3">
+                   <label class="form-control-label fs-5 text-center" for="authCode">Enter Code</label>
+                   <input class="form-control border border-top-0 border-end-0 border-start-0" type="text" name="authCode" #code = "ngModel" id="authCode" [(ngModel)]="model.authCode">
+                </div>
+                <div class="d-grid gap-2 col-6 m-auto">
+                    <button class="btn btn-primary shadow rounded border" type="submit">Verify</button>
+                </div>
+             </form>
+          </div>
+          <div class="col-lg-4"></div>
+       </div>   
+    </div>
+</section>

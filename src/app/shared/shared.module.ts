@@ -5,18 +5,30 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedRoutingModule } from './shared-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CustomMaterialModule } from '../core/utils/material.module';
-import { CartcounterComponent } from './cartcounter/cartcounter.component';
-import { ViewcartComponent } from './viewcart/viewcart.component';
 import { AuthLinksComponent } from './auth-links/auth-links.component';
 import { CartWidgetComponent } from './cart-widget/cart-widget.component';
+import { LoginAlertModalComponent } from './login-alert-modal/login-alert-modal.component';
+import { RegisterAlertModalComponent } from './register-alert-modal/register-alert-modal.component';
+import { CartAlertModalComponent } from './cart-alert-modal/cart-alert-modal.component';
+import { ProductDetailsAlertModalComponent } from './product-details-alert-modal/product-details-alert-modal.component';
+import { AccountSettingsAlertModalComponent } from './account-settings-alert-modal/account-settings-alert-modal.component';
+import { EmailConfirmationAlertModalComponent } from './email-confirmation-alert-modal/email-confirmation-alert-modal.component';
+import { ForgotPasswordAlertModalComponent } from './forgot-password-alert-modal/forgot-password-alert-modal.component';
+import { ResetPasswordAlertModalComponent } from './reset-password-alert-modal/reset-password-alert-modal.component';
 
 
 @NgModule({
   declarations: [
-    CartcounterComponent,
-    ViewcartComponent,
     AuthLinksComponent,
-    CartWidgetComponent
+    CartWidgetComponent,
+    LoginAlertModalComponent,
+    RegisterAlertModalComponent,
+    CartAlertModalComponent,
+    ProductDetailsAlertModalComponent,
+    AccountSettingsAlertModalComponent,
+    EmailConfirmationAlertModalComponent,
+    ForgotPasswordAlertModalComponent,
+    ResetPasswordAlertModalComponent
   ],
   imports: [
     CommonModule,
@@ -35,10 +47,17 @@ import { CartWidgetComponent } from './cart-widget/cart-widget.component';
     RouterModule,
     NgxPaginationModule,
     CustomMaterialModule,
-    CartcounterComponent,
-    ViewcartComponent,
     AuthLinksComponent,
-    CartWidgetComponent
+    CartWidgetComponent,
+    LoginAlertModalComponent,
+    RegisterAlertModalComponent,
+    CartAlertModalComponent,
+    ProductDetailsAlertModalComponent,
+    AccountSettingsAlertModalComponent,
+    EmailConfirmationAlertModalComponent,
+    ForgotPasswordAlertModalComponent,
+    ResetPasswordAlertModalComponent
+
   ]
 })
 export class SharedModule { }

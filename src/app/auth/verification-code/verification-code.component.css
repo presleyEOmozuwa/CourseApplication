@@ -1,0 +1,8 @@
+.verify{
+    margin-top: 50px;
+}
+
+.verify input{
+    box-shadow: none !important;
+    border: 2px solid gainsboro;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from '@full-fledged/alerts';
 import { UserService } from 'src/app/core/userServices/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/core/userServices/user.service';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, private alertService: AlertService) { }
 
   ngOnInit(): void {
   }
@@ -20,12 +21,18 @@ export class ResetPasswordComponent implements OnInit {
     const password: string = f.value.password;
     const confirmPassword: string = f.value.confirmPassword;
     const observer: any = {
-      next: (res: any) => {
-        console.log(res.Message);
-        this.router.navigate(['/auth/login']);
+      next: (val: any) => {
+        console.log(val);
+        if(val.isPasswordResetSuccessful == true){
+          this.router.navigate(['/auth/login']);
+        }
+        
       },
-      error: (error : any) => {
-        console.log(error);
+      error: (res : any) => {
+        console.log(res);
+        if(res.error.isPasswordResetSuccessful == false){
+          this.alertService.danger("Password reset failed, try again later");
+        }
       }
     }
     this.userService.sendResetPasswordCreds(token, id, password, confirmPassword).subscribe(observer);

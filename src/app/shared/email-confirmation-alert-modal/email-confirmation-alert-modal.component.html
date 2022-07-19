@@ -1,0 +1,12 @@
+<div class="backdrop"></div>
+<div class="alert-box">
+    <div *ngIf="val.serverError">
+        <p class="fs-5 fw-semibold">Server Error, try again later.</p>
+    </div>
+    <div *ngIf="val.emailConfirmedFailed">
+        <p class="fs-5 fw-semibold">Reistration Failed, try again later.</p>
+    </div>
+    <div class="alert-box-actions text-end">
+        <button class="btn btn-primary btn-sm rounded shadow" type="button" (click)="onCloseClick()">Close</button>
+    </div>
+</div>

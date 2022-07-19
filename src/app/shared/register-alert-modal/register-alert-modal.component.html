@@ -1,0 +1,22 @@
+<div class="backdrop"></div>
+<div class="alert-box">
+    <div *ngIf="val.emailConfirmationLinkSent">
+        <p class="fs-5 fw-bold">Check Your Inbox For Email Confirmation Link.</p>
+    </div>
+    <div *ngIf="val.accountDeleted">
+        <p class="fs-5 fw-semibold">Invalid! Email Belongs to a Deleted Account.</p>
+    </div>
+    <div *ngIf="val.emailAlreadyTaken">
+        <p class="fs-5 fw-semibold">Email Already Taken.</p>
+    </div>
+    <div *ngIf="val.userNameAlreadyTaken">
+        <p class="fs-5 fw-semibold">UserName Already Taken.</p>
+    </div>
+    <div *ngIf="val.registrationSucceeded">
+        <p class="fs-5 fw-semibold">Registration Failed, try again later.</p>
+    </div>
+    
+    <div class="alert-box-actions text-end">
+        <button class="btn btn-primary btn-sm rounded shadow" type="button" (click)="onCloseClick()">Close</button>
+    </div>
+</div>

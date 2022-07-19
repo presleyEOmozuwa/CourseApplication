@@ -1,0 +1,19 @@
+<div class="backdrop"></div>
+<div class="alert-box">
+    <div *ngIf="val.loggedInFromAnotherDevice">
+        <p class="fs-5 fw-semibold">Check Your Inbox For Verication Code.</p>
+    </div>
+    <div *ngIf="val.accountDeleted">
+        <p class="fs-5 fw-semibold">Invalid! Email Belongs to a Deleted Account.</p>
+    </div>
+    <div *ngIf="val.emailInvalid">
+        <p class="fs-5 fw-semibold">Invalid Email or Password.</p>
+    </div>
+    <div *ngIf="val.passwordInvalid">
+        <p class="fs-5 fw-semibold">Invalid Email or Password.</p>
+    </div>
+    
+    <div class="alert-box-actions text-end">
+        <button class="btn btn-primary btn-sm rounded shadow" type="button" (click)="onCloseClick()">Close</button>
+    </div>
+</div>
